@@ -1,0 +1,308 @@
+<?php 
+class Member extends CI_CONTROLLER{
+	public function __construct(){
+		parent::__construct();
+		$this->load->model("member_model","member");
+		$this->load->helper(array('form', 'url'));
+		$this->load->library("form_validation");
+		$this->load->library("upload");
+		
+
+	}
+	public function index(){
+		$this->rs = $this->member->getall();
+		$this->load->view("member/index",$this);
+	}
+	public function create(){
+
+		$config = array(
+			array(
+					"field"=>"username",
+					"label"=>"username",
+					"rules"=>"required|callback_username_check"
+				),
+			array(
+					"field"=>"email",
+					"label"=>"email",
+					"rules"=>"required|valid_email|callback_check_exists_email"
+				)
+			
+		);
+		$this->form_validation->set_rules($config);
+		if($this->form_validation->run()==FALSE){
+			$this->load->view("create/index");
+		}
+		else{
+			if($_FILES['file_name']['name'] != ""){	
+	            $config['upload_path'] ='images/flag';
+	            $config['allowed_types'] = 'jpg|png'; 
+	            $config['overwrite'] = false; 
+
+	            $_FILES['file_name']['name'] =  uniqid().$_FILES['file_name']['name'];
+	            $ext =pathinfo($_FILES['file_name']['name'], PATHINFO_EXTENSION);
+	            $config['file_name']= $_FILES['file_name']['name']; 
+	            $imgname = $config['file_name'];
+
+	            $this->upload->initialize($config);
+	            $this->load->library('upload', $config);    
+            	if(!$this->upload->do_upload('file_name')){
+	                $error = $this->upload->display_errors();
+	                $data= array('error'=>$error,);
+	                $this->load->view('error',$data);
+	                return false;
+                }
+       	   	}
+       	   	$this->member->savecomment(array(
+       	   			"username"=>$this->input->post("username"),
+       	   			"beautiful"=>$this->input->post("beautiful"),
+		       	   	"work"=>$this->input->post("work"),
+		       	   	"code"=>$this->input->post("code"),
+		       	   	"time"=>$this->input->post("time")
+       	   		));
+			$this->member->saveuser(array(
+					"username"=>$this->input->post("username"),
+					"password"=>md5($this->input->post("password")),
+					"fname"=>$this->input->post("fname"),
+					"lname"=>$this->input->post("lname"),
+					"phone"=>$this->input->post("phone"),
+					"email"=>$this->input->post("email"),
+					"text"=>$this->input->post("text"),
+					"sdate"=>date('Y-m-d'),
+					"upload"=>$imgname
+				));		
+			redirect("");
+		}
+		// if($_SERVER['REQUEST_METHOD']=="POST"){
+		// 	$this->member->save(array(
+		// 			"username"=>$this->input->post("username"),
+		// 			"password"=>$this->input->post("password"),
+		// 			"fname"=>$this->input->post("fname"),
+		// 			"lname"=>$this->input->post("lname"),
+		// 			"phone"=>$this->input->post("phone"),
+		// 			"email"=>$this->input->post("email"),
+		// 			"text"=>$this->input->post("text"),
+		// 			"sdate"=>date('Y-m-d')
+		// 		));
+		// 	redirect("member"); 
+		// }
+		// $this->load->view("member/create");
+	}
+	public function update(){
+		$id = $this->input->post("id");
+		$config = array(
+			array(
+					"field"=>"email",
+					"label"=>"email",
+					"rules"=>"required|valid_email|callback_check_exists_email_edit[$id]"
+				)
+		);
+		$this->form_validation->set_rules($config);
+
+		if($this->form_validation->run()==FALSE){
+			$this->r = $this->member->getone($id);
+			$this->load->view("update/index",$this);
+		}
+		else{
+			if($_FILES['file_name']['name'] != "")
+         	{	
+
+	            $config['upload_path'] ='images/flag';
+	            $config['allowed_types'] = 'jpg|png'; 
+	            $config['overwrite'] = false; 
+
+	            $_FILES['file_name']['name'] =  uniqid().$_FILES['file_name']['name'];
+	            $ext =pathinfo($_FILES['file_name']['name'], PATHINFO_EXTENSION);
+	            $config['file_name']= $_FILES['file_name']['name']; 
+	            $imgname = $config['file_name'];
+
+	            $this->upload->initialize($config);
+	            $this->load->library('upload', $config);    
+            	if(!$this->upload->do_upload('file_name'))
+                {
+	                $error = $this->upload->display_errors();
+	                $data= array('error'=>$error,);
+	                $this->load->view('error',$data);
+	                return false;
+                }
+                $this->member->update($id,array(
+					"username"=>$this->input->post("username"),
+					"password"=>md5($this->input->post("password")),
+					"fname"=>$this->input->post("fname"),
+					"lname"=>$this->input->post("lname"),
+					"phone"=>$this->input->post("phone"),
+					"email"=>$this->input->post("email"),
+					"text"=>$this->input->post("text"),
+					"edate"=>date('Y-m-d'),
+					"upload"=>$imgname
+				));
+       	   	}
+       	   	else{
+			$this->member->update($id,array(
+					"username"=>$this->input->post("username"),
+					"password"=>md5($this->input->post("password")),
+					"fname"=>$this->input->post("fname"),
+					"lname"=>$this->input->post("lname"),
+					"phone"=>$this->input->post("phone"),
+					"email"=>$this->input->post("email"),
+					"text"=>$this->input->post("text"),
+					"edate"=>date('Y-m-d'),
+					// "upload"=>$imgname
+				));
+       	   	 }
+			$this->show();
+		}
+	}
+	public function edit(){
+		$id = $this->input->post("id");
+		$config = array(
+			array(
+					"field"=>"email",
+					"label"=>"email",
+					"rules"=>"required|valid_email|callback_check_exists_email_edit[$id]"
+				)
+		);
+		$this->form_validation->set_rules($config);
+		if($this->form_validation->run()==FALSE){
+			$this->r = $this->member->getone($id);
+			$this->load->view("updateadmin/index",$this);
+		}
+		else{
+			if($_FILES['file_name']['name'] != "")
+         	{	
+	            $config['upload_path'] ='images/flag';
+	            $config['allowed_types'] = 'jpg|png'; 
+	            $config['overwrite'] = false; 
+
+	            $_FILES['file_name']['name'] =  uniqid().$_FILES['file_name']['name'];
+	            $ext =pathinfo($_FILES['file_name']['name'], PATHINFO_EXTENSION);
+	            $config['file_name']= $_FILES['file_name']['name']; 
+	            $imgname = $config['file_name'];
+	            
+	            $this->upload->initialize($config);
+	            $this->load->library('upload', $config);    
+            	if(!$this->upload->do_upload('file_name'))
+                {
+	                $error = $this->upload->display_errors();
+	                $data= array('error'=>$error,);
+	                $this->load->view('error',$data);
+	                return false;
+                }
+                $this->member->update($id,array(
+						"username"=>$this->input->post("username"),
+						"password"=>md5($this->input->post("password")),
+						"fname"=>$this->input->post("fname"),
+						"lname"=>$this->input->post("lname"),
+						"phone"=>$this->input->post("phone"),
+						"email"=>$this->input->post("email"),
+						"text"=>$this->input->post("text"),
+						"edate"=>date('Y-m-d'),
+						"upload"=>$imgname
+					));
+       	   	} 
+       	   	else{
+				$this->member->update($id,array(
+						"username"=>$this->input->post("username"),
+						"password"=>md5($this->input->post("password")),
+						"fname"=>$this->input->post("fname"),
+						"lname"=>$this->input->post("lname"),
+						"phone"=>$this->input->post("phone"),
+						"email"=>$this->input->post("email"),
+						"text"=>$this->input->post("text"),
+						"edate"=>date('Y-m-d'),
+						// "upload"=>$imgname
+					));
+			}
+			$this->showone($id);	
+		}
+	}
+	public function delete(){
+		$id = $this->input->post("id");
+		$this->db->where("id",$id)->delete("user");
+		redirect("member/show");
+	}
+
+	public function edit_id(){
+		$id = $this->input->post("id");
+		$this->edit($id);
+	}
+	
+	public function check_exists_email($email){
+		$check = $this->member->findemail($email);
+		if($check){
+			return TRUE;
+		}
+		else{
+			$this->form_validation->set_message("check_exists_email","เมล์ซ้ำนาจาาาา");
+			return FALSE;
+		}
+	}
+	public function username_check($username){
+		// echo $username;
+		$check = $this->member->findeusername($username);
+		if($check){
+			return TRUE;
+		}
+		else{
+			$this->form_validation->set_message("username_check","username มีแล้วนาจาาา");
+			return FALSE;
+		}
+	}
+
+	public function check_exists_email_edit($email,$id){
+		// echo "email".$email." ";
+		// echo "id".$id;
+
+		$check = $this->member->findemail_edit($email,$id);
+		
+		if($check){
+			return TRUE;
+		}
+		else{
+			$this->form_validation->set_message("check_exists_email_edit","เมล์ซ้ำนาจาาาา");
+			return FALSE;
+		}
+	}
+
+	public function login(){
+		if($_SERVER['REQUEST_METHOD']=="POST"){
+			$username = $this->input->post("username");
+			$password = $this->input->post("password");
+			if($username=="admin"&&$password=="admin"){
+				$this->show();
+			}
+			else{
+			// echo $username;
+			// echo $password;
+				$this->r = $this->db->where("username",$username)->get("user")->row();
+				if($this->r->id==''){
+					redirect("member/login");
+				}
+				else{
+					$this->showone($this->r->id);
+				}
+			}
+		}
+		else{
+			$this->load->view("login/index");
+		}
+	}
+	public function show(){
+		$this->rs = $this->member->getall();
+		$this->r = $this->db->get("comment")->result();
+		$this->load->view("show/index",$this);
+
+	}
+	public function showone($id){
+		// echo $id;
+		$this->r = $this->member->getone($id);
+		$this->load->view("showone/index",$this);
+	}
+	public function comment(){
+		$id = $this->input->post("id");
+		$username = $this->input->post("username");
+		$this->r = $this->db->where("id",$id)->where("username",$username)->get("user")->row();
+		$this->rs = $this->db->where("username",$username)->get("comment")->row();
+		$this->load->view("comment/index",$this);
+	}
+}
+ ?>

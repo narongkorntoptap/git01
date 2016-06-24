@@ -1,0 +1,89 @@
+#menu_header .navbar{
+	background-color: #f2f2f2;
+	border-color: #f2f2f2;
+}
+#menu_header a:hover{
+	background-color: #05615d;
+	color : #fff;
+}
+#menu_header a{
+	color : #000;
+}
+#footer .iBannerFix{  
+    height:50px;  
+   
+    left:0px;  
+    bottom:0px;  
+    width:100%;  
+    z-index: 99;  
+    background-color: #f2f2f2;
+	padding: 10px;
+}  
+#index .iBannerFix{
+      position: fixed;
+}
+#login .iBannerFix{
+      position: fixed;
+}
+
+#showone .iBannerFix{
+      position: fixed;
+}
+#create .iBannerFix{
+      position: fixed;
+}
+
+.footer__text{
+	text-align: center;
+	color: #000;
+}
+a{
+    color: #fff;
+}
+a:hover{
+    color: white;
+    text-decoration: none;
+}
+a:focus{
+    text-decoration: none;
+    color: white;
+}
+
+#index .buttonuser {
+    padding: 50px 22px;
+    font-size: 30px;
+}
+.buttonuser {
+    background-color: #099e97;
+    border: none;
+    color: white;
+    padding: 6px 22px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+}
+.buttonuser:hover{
+	background-color: gray;
+	transition-duration: 0.2s;
+}
+.inputform {
+    
+    border-bottom: 2px solid #85e085;
+    border-left: 2px solid #85e085; 
+   
+}
+.inputform:focus {
+    outline: none;
+    box-shadow: #fff;
+    border-color: #00e600;
+}
+.tablecolor{
+    background-color: #0aa9a1;
+    color: #fff;
+}
+/*#index a:hover{
+    width: 20px;
+}*/
