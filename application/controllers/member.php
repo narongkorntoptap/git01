@@ -182,6 +182,8 @@ class Member extends CI_CONTROLLER{
 	public function edit(){
 		$id = $this->input->post("id");
 		$username = $this->input->post("username");
+		// echo $id;
+		// exit();
 		$config = array(
 			array(
 					"field"=>"email",
@@ -191,9 +193,9 @@ class Member extends CI_CONTROLLER{
 		);
 		$this->form_validation->set_rules($config);
 		if($this->form_validation->run()==FALSE){
-			// echo "string";
+			// echo $username;
 			// exit();
-			$this->r = $this->member->getone($id);
+			$this->r = $this->member->getone($username);
 			$this->load->view("updateadmin/index",$this);
 		}
 		else{
@@ -323,7 +325,8 @@ class Member extends CI_CONTROLLER{
 
 	}
 	public function showone($username){
-		// echo $id;
+		// echo $username;
+		// exit();
 		$this->r = $this->member->getone($username);
 		$this->rs = $this->member->getonework($username);
 		$this->load->view("showone/index",$this);
