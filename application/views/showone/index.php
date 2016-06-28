@@ -92,13 +92,16 @@
 						<?php foreach($rs as $a){  ?>
 							<tr>
 								
-							
+							<?php $income=$a->inmoney; ?>
+							<?php $expenses = $a->outmoney; 
+								$result = $income - $expenses;
+							?>
 								<td><?php echo $a->date; ?></td>
 								<td><?php echo $a->stime; ?></td>
 								<td><?php echo $a->etime; ?></td>
 								<td><?php echo $a->inmoney; ?></td>
 								<td><?php echo $a->outmoney; ?></td>
-								<td><?php echo $a->inmoney; ?> <var>-</var> <?php echo $r->outmoney; ?></td>
+								<td><?php echo $result;  ?></td>
 							</tr>
 						<?php }
 					} 
