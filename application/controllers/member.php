@@ -181,6 +181,7 @@ class Member extends CI_CONTROLLER{
 	}
 	public function edit(){
 		$id = $this->input->post("id");
+		$username = $this->input->post("username");
 		$config = array(
 			array(
 					"field"=>"email",
@@ -241,7 +242,7 @@ class Member extends CI_CONTROLLER{
 						// "upload"=>$imgname
 					));
 			}
-			$this->showone($id);	
+			$this->showone($username);	
 		}
 	}
 	public function delete(){
@@ -307,7 +308,7 @@ class Member extends CI_CONTROLLER{
 					redirect("member/login");
 				}
 				else{
-					$this->showone($this->r->id);
+					$this->showone($this->r->username);
 				}
 			}
 		}
@@ -321,9 +322,10 @@ class Member extends CI_CONTROLLER{
 		$this->load->view("show/index",$this);
 
 	}
-	public function showone($id){
+	public function showone($username){
 		// echo $id;
-		$this->r = $this->member->getone($id);
+		$this->r = $this->member->getone($username);
+		$this->rs = $this->member->getonework($username);
 		$this->load->view("showone/index",$this);
 	}
 	public function comment(){
@@ -399,10 +401,16 @@ class Member extends CI_CONTROLLER{
 		
 	}
 
-<<<<<<< HEAD
+
+	public function work(){
+		$username = $this->input->post("username");
+		$this->rs = $this->db->where("username",$username)->get("user")->row();
+		$this->load->view("input_diary/input",$this);
+	}
+
 	public function creatework(){
 		$username = $this->input->post("username");
-		
+		$id = $this->input->post("id");
 
 		$config = array(
 			array(
@@ -431,16 +439,22 @@ class Member extends CI_CONTROLLER{
 
 		$this->form_validation->set_rules($config);
 		if($this->form_validation->run()==FALSE){
+			// echo "string";
+			// exit();
 			$this->rs = $this->member->getone($id);
-			$this->load->view("commentuser/index",$this);
+			// echo "<pre>";
+			// print_r($this->rs);
+			// exit();
+			$this->load->view("input_diary/input",$this);
 		}
 		else{	  
-			$this->member->savecomment(array(
+			$this->member->savework(array(
        	   			"username"=>$username,
-       	   			"beautiful"=>$this->input->post("beautiful"),
-		       	   	"work"=>$this->input->post("work"),
-		       	   	"code"=>$this->input->post("code"),
-		       	   	"time"=>$this->input->post("time")
+       	   			"date"=>date('Y-m-d'),
+		       	   	"stime"=>$this->input->post("stime"),
+		       	   	"etime"=>$this->input->post("etime"),
+		       	   	"inmoney"=>$this->input->post("inmoney"),
+		       	   	"outmoney"=>$this->input->post("outmoney")
        	   		));
 			$this->member->update($id,array(
 						"username"=>$this->input->post("username"),
@@ -453,19 +467,14 @@ class Member extends CI_CONTROLLER{
 						"sdate"=>$this->input->post("sdate"),
 						"edate"=>$this->input->post("edate"),
 						"upload"=>$this->input->post("upload"),
-						"comment"=>"1"
+						"comment"=>"1",
+						"work"=>"1"
 					));
-			$this->showone($id);
+			$this->showone($username);
 		}
 		
 	}
 
-=======
-	public function diary()
-	{
-		$this->load->view("diary/index");
-	}
->>>>>>> f9f5f9c97a7ad4c04fa51f8fe8ef4ae53a0f52e8
-}
 
+}
  ?>

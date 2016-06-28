@@ -45,13 +45,15 @@
 						<td><img src="<?php echo base_url(); ?>images/flag/<?php echo $r->upload; ?>"></td>
 						<!-- $id = <?php echo $r->id?>; -->
 						<td>
-							<?php if($r->comment == 0){ ?>
-								<?php echo form_open("member/diary");?>
-								
+								<?php echo "<pre>";
+								print_r($this->r);
+								print_r($this->rs);
+								exit(); ?>
+								<?php echo form_open("member/work");?>
 								<input type="hidden" name="username" value="<?php echo $r->username; ?>">
 								<button type="submit" class="buttonuser">diary</button> 
 								<?php echo form_close(); ?>
-							<?php } ?>
+							
 
 							<?php if($r->comment == 0){ ?>
 								<?php echo form_open("member/commentusershow");?>
@@ -62,6 +64,7 @@
 							<?php } ?>
 							<?php echo form_open("member/edit");?>
 							<input type="hidden" name="id" value="<?php echo $r->id; ?>">
+							<input type="hidden" name="username" value="<?php echo $r->username; ?>">
 							<button type="submit" class="buttonuser">Edit</button> 
 							<?php echo form_close(); ?>
 						</td>

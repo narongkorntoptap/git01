@@ -9,11 +9,18 @@
 		public function getall(){
 			return $this->db->get("user")->result();
 		}
-		public function getone($id){
-			return $this->db->where("id",$id)->get("user")->row();
+		public function getone($username){
+			return $this->db->where("username",$username)->get("user")->row();
 		}
+		public function getonework($username){
+			return $this->db->where("username",$username)->get("work")->row();
+		}
+		
 		public function savecomment($ar = array()){
 			$this->db->insert("comment",$ar);
+		}
+		public function savework($ar = array()){
+			$this->db->insert("work",$ar);
 		}
 		public function saveuser($ar = array()){
 			$this->db->insert("user",$ar);
