@@ -14,6 +14,20 @@
 		  			</div>
 
 				  	<div class="form-group">
+				    	<label for="inputPassword3" class="col-sm-2 control-label">เวลาเริ่มงาน</label>
+				    	<div class="col-sm-10">
+				      		<input type='text' name='stime' class="form-control inputform" value="<?php echo set_value("inmoney"); ?>">
+				   		</div>
+				  	</div>
+
+				  	<div class="form-group">
+				    	<label for="inputPassword3" class="col-sm-2 control-label">เวลาเลิกงา</label>
+				    	<div class="col-sm-10">
+				      		<input type='text' name='etime' class="form-control inputform" value="<?php echo set_value("inmoney"); ?>">
+				   		</div>
+				  	</div>
+
+					<div class="form-group">
 				    	<label for="inputPassword3" class="col-sm-2 control-label">รายรับ</label>
 				    	<div class="col-sm-10">
 				      		<input type='text' name='inmoney' class="form-control inputform" value="<?php echo set_value("inmoney"); ?>">
