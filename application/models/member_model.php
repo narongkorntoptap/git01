@@ -13,7 +13,7 @@
 			return $this->db->where("username",$username)->get("user")->row();
 		}
 		public function getonework($username){
-			return $this->db->where("username",$username)->get("work")->row();
+			return $this->db->where("username",$username)->get("work")->result();
 		}
 		
 		public function savecomment($ar = array()){
