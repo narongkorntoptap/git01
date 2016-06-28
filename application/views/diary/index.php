@@ -22,27 +22,25 @@
 		</thead><!-- <img src=""> -->
 		<tbody>
 			
-					<tr>
-						<td><?php echo $r->id?></td>
-						<td><?php echo $r->username; ?></td>
-					
-						<?php  $sdate = date_create($r->sdate); ?>
-						<?php  $edate = date_create($r->edate); ?>
-						<?php  $d = date_diff($sdate,$edate); ?>
-						<td><?php echo $d->format('%a'); ?></td>
-						<td><?php echo $r->lname; ?></td>
-						<td><?php echo $r->phone; ?></td>
-						<td><?php echo $r->email; ?></td>
-						<td><?php echo $r->text; ?></td>
-						<td><?php echo $r->sdate; ?></td>
-						
-						
-						
-					</tr>
-			
+					<?php if(count($rs)>0){ ?>
+						<?php foreach($rs as $r){  ?>
+							<tr>
+								<td><?php echo $r->id?></td>
+								<td><?php echo $r->username; ?></td>
+							
+								<?php  $sdate = date_create($r->sdate); ?>
+								<?php  $edate = date_create($r->edate); ?>
+								<?php  $d = date_diff($sdate,$edate); ?>
+								<td><?php echo $d->format('%a'); ?></td>
+								<td><?php echo $r->lname; ?></td>
+								<td><?php echo $r->phone; ?></td>
+								<td><?php echo $r->email; ?></td>
+								<td><?php echo $r->text; ?></td>
+								<td><?php echo $r->sdate; ?></td>
+							</tr>
+						<?php }
+					} ?>
 		</tbody>
-					
-
 	</table>
 
 <?php echo form_close(); ?>
