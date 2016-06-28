@@ -45,11 +45,7 @@
 						<td><img src="<?php echo base_url(); ?>images/flag/<?php echo $r->upload; ?>"></td>
 						<!-- $id = <?php echo $r->id?>; -->
 						<td>
-<<<<<<< HEAD
 
-=======
-								
->>>>>>> b44abbce785e864cf629ff0c9aab02b05771136a
 								<?php echo form_open("member/work");?>
 								<input type="hidden" name="username" value="<?php echo $r->username; ?>">
 								<button type="submit" class="buttonuser">diary</button> 
