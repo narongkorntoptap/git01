@@ -398,5 +398,11 @@ class Member extends CI_CONTROLLER{
 		}
 		
 	}
+
+	public function diary()
+	{
+		$this->load->view("diary/index");
+	}
 }
+
  ?>

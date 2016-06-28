@@ -1,6 +1,6 @@
-
+<?php $this->load->view('template/header'); ?>
 	<section id="showone">
-	
+	<?php echo form_open('member/diary'); ?>
 			<h1>SHOW DATABASE</h1>
 			
 				
@@ -45,5 +45,7 @@
 
 	</table>
 
+<?php echo form_close(); ?>
 
 </section>
+<?php $this->load->view('template/footer'); ?>
