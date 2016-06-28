@@ -22,6 +22,12 @@
 #index .iBannerFix{
       position: fixed;
 }
+#comment .iBannerFix{
+      position: fixed;
+}
+#commentuser .iBannerFix{
+      position: fixed;
+}
 #login .iBannerFix{
       position: fixed;
 }
@@ -29,9 +35,7 @@
 #showone .iBannerFix{
       position: fixed;
 }
-#create .iBannerFix{
-      position: fixed;
-}
+
 
 .footer__text{
 	text-align: center;

@@ -38,11 +38,13 @@
 							<td><?php echo $d->format('%a'); ?></td>
 							<td><img src="<?php echo base_url(); ?>images/flag/<?php echo $r->upload; ?>"></td>		
 							<td>
-								<?php echo form_open("member/comment");?>
-								<input type="hidden" name="id" value="<?php echo $r->id; ?>">
-								<input type="hidden" name="username" value="<?php echo $r->username; ?>">
-								<button type="submit" class="buttonuser">ประเมิน</button> 
-								<?php echo form_close(); ?>
+								<?php if($r->comment == 1){ ?>
+									<?php echo form_open("member/comment");?>
+									<input type="hidden" name="id" value="<?php echo $r->id; ?>">
+									<input type="hidden" name="username" value="<?php echo $r->username; ?>">
+									<button type="submit" class="buttonuser">ประเมิน</button> 
+									<?php echo form_close(); ?>
+								<?php } ?>
 							</td>
 							<td>
 								<?php echo form_open("member/update");?>

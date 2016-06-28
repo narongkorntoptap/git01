@@ -57,10 +57,11 @@
 					<tbody>
 						<tr>
 							
-							<td><?php echo $rs->beautiful; ?></td>
-							<td><?php echo $rs->work; ?></td>
-							<td><?php echo $rs->code; ?></td>
-							<td><?php echo $rs->time; ?></td>
+								<td><?php echo $rs->beautiful; ?></td>
+								<td><?php echo $rs->work; ?></td>
+								<td><?php echo $rs->code; ?></td>
+								<td><?php echo $rs->time; ?></td>
+			
 						</tr>	
 					</tbody>
 				</table>

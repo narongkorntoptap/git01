@@ -22,9 +22,34 @@ class Member extends CI_CONTROLLER{
 					"rules"=>"required|callback_username_check"
 				),
 			array(
+					"field"=>"password",
+					"label"=>"password",
+					"rules"=>"required"
+				),
+			array(
+					"field"=>"fname",
+					"label"=>"fistname",
+					"rules"=>"required"
+				),
+			array(
+					"field"=>"lname",
+					"label"=>"surname",
+					"rules"=>"required"
+				),
+			array(
+					"field"=>"phone",
+					"label"=>"telephone",
+					"rules"=>"required"
+				),
+			array(
 					"field"=>"email",
 					"label"=>"email",
 					"rules"=>"required|valid_email|callback_check_exists_email"
+				),
+			array(
+					"field"=>"text",
+					"label"=>"text",
+					"rules"=>"required"
 				)
 			
 		);
@@ -52,13 +77,13 @@ class Member extends CI_CONTROLLER{
 	                return false;
                 }
        	   	}
-       	   	$this->member->savecomment(array(
-       	   			"username"=>$this->input->post("username"),
-       	   			"beautiful"=>$this->input->post("beautiful"),
-		       	   	"work"=>$this->input->post("work"),
-		       	   	"code"=>$this->input->post("code"),
-		       	   	"time"=>$this->input->post("time")
-       	   		));
+       	   	// $this->member->savecomment(array(
+       	   	// 		"username"=>$this->input->post("username"),
+       	   	// 		"beautiful"=>$this->input->post("beautiful"),
+		       	  //  	"work"=>$this->input->post("work"),
+		       	  //  	"code"=>$this->input->post("code"),
+		       	  //  	"time"=>$this->input->post("time")
+       	   	// 	));
 			$this->member->saveuser(array(
 					"username"=>$this->input->post("username"),
 					"password"=>md5($this->input->post("password")),
@@ -99,6 +124,8 @@ class Member extends CI_CONTROLLER{
 		$this->form_validation->set_rules($config);
 
 		if($this->form_validation->run()==FALSE){
+			// echo "string";
+			// exit();
 			$this->r = $this->member->getone($id);
 			$this->load->view("update/index",$this);
 		}
@@ -163,6 +190,8 @@ class Member extends CI_CONTROLLER{
 		);
 		$this->form_validation->set_rules($config);
 		if($this->form_validation->run()==FALSE){
+			// echo "string";
+			// exit();
 			$this->r = $this->member->getone($id);
 			$this->load->view("updateadmin/index",$this);
 		}
@@ -303,6 +332,71 @@ class Member extends CI_CONTROLLER{
 		$this->r = $this->db->where("id",$id)->where("username",$username)->get("user")->row();
 		$this->rs = $this->db->where("username",$username)->get("comment")->row();
 		$this->load->view("comment/index",$this);
+	}
+	public function commentusershow(){
+		$username = $this->input->post("username");
+		$this->rs = $this->db->where("username",$username)->get("user")->row();
+		$this->load->view("commentuser/index",$this);
+	}
+	public function commentuser(){
+		$username = $this->input->post("username");
+		$id = $this->input->post("id");
+
+		$config = array(
+			array(
+					"field"=>"beautiful",
+					"label"=>"ความสวยงาม",
+					"rules"=>"required"
+				),
+			array(
+					"field"=>"work",
+					"label"=>"การใช้งาน",
+					"rules"=>"required"
+				),
+			array(
+					"field"=>"code",
+					"label"=>"อธิบายโค้ด",
+					"rules"=>"required"
+				),
+			array(
+					"field"=>"time",
+					"label"=>"ระยะเวลา",
+					"rules"=>"required"
+				)
+
+		);
+
+		
+
+		$this->form_validation->set_rules($config);
+		if($this->form_validation->run()==FALSE){
+			$this->rs = $this->member->getone($id);
+			$this->load->view("commentuser/index",$this);
+		}
+		else{	  
+			$this->member->savecomment(array(
+       	   			"username"=>$username,
+       	   			"beautiful"=>$this->input->post("beautiful"),
+		       	   	"work"=>$this->input->post("work"),
+		       	   	"code"=>$this->input->post("code"),
+		       	   	"time"=>$this->input->post("time")
+       	   		));
+			$this->member->update($id,array(
+						"username"=>$this->input->post("username"),
+						"password"=>md5($this->input->post("password")),
+						"fname"=>$this->input->post("fname"),
+						"lname"=>$this->input->post("lname"),
+						"phone"=>$this->input->post("phone"),
+						"email"=>$this->input->post("email"),
+						"text"=>$this->input->post("text"),
+						"sdate"=>$this->input->post("sdate"),
+						"edate"=>$this->input->post("edate"),
+						"upload"=>$this->input->post("upload"),
+						"comment"=>"1"
+					));
+			$this->showone($id);
+		}
+		
 	}
 }
  ?>
