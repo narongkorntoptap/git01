@@ -399,6 +399,7 @@ class Member extends CI_CONTROLLER{
 		
 	}
 
+<<<<<<< HEAD
 	public function creatework(){
 		$username = $this->input->post("username");
 		
@@ -459,5 +460,12 @@ class Member extends CI_CONTROLLER{
 		
 	}
 
+=======
+	public function diary()
+	{
+		$this->load->view("diary/index");
+	}
+>>>>>>> f9f5f9c97a7ad4c04fa51f8fe8ef4ae53a0f52e8
 }
+
  ?>

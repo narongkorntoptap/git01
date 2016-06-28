@@ -46,6 +46,14 @@
 						<!-- $id = <?php echo $r->id?>; -->
 						<td>
 							<?php if($r->comment == 0){ ?>
+								<?php echo form_open("member/diary");?>
+								
+								<input type="hidden" name="username" value="<?php echo $r->username; ?>">
+								<button type="submit" class="buttonuser">diary</button> 
+								<?php echo form_close(); ?>
+							<?php } ?>
+
+							<?php if($r->comment == 0){ ?>
 								<?php echo form_open("member/commentusershow");?>
 								<input type="hidden" name="id" value="<?php echo $r->id; ?>">
 								<input type="hidden" name="username" value="<?php echo $r->username; ?>">
