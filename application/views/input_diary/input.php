@@ -15,14 +15,14 @@
 			  	<div class="form-group">
 			    	<label for="inputPassword3" class="col-sm-2 control-label">รายรับ</label>
 			    	<div class="col-sm-10">
-			      		<input type='text' name='username' class="form-control inputform" value="<?php echo set_value("username"); ?>">
+			      		<input type='text' name='inmoney' class="form-control inputform" value="<?php echo set_value("inmoney"); ?>">
 			   		</div>
 			  	</div>
 
 			  	<div class="form-group">
 			    	<label for="inputPassword3" class="col-sm-2 control-label">รายจ่าย</label>
 			    	<div class="col-sm-10">
-			      		<input type='text' name='first_name' class="form-control inputform" value="<?php echo set_value("first_name"); ?>">
+			      		<input type='text' name='outmoney' class="form-control inputform" value="<?php echo set_value("outmoney"); ?>">
 			   		</div>
 			  	</div>
 
