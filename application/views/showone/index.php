@@ -80,7 +80,7 @@
 				<th>Date</th>
 				<th>Starttime</th>
 				<th>Endtime</th>
-				<!-- <th>Description</th> -->
+				<th>Description</th>
 				<th>Income</th>
 				<th>Expenses</th>
 				<th>remain</th>
@@ -99,6 +99,7 @@
 								<td><?php echo $a->date; ?></td>
 								<td><?php echo $a->stime; ?></td>
 								<td><?php echo $a->etime; ?></td>
+								<td><?php echo $a->Des; ?></td>
 								<td><?php echo $a->inmoney; ?></td>
 								<td><?php echo $a->outmoney; ?></td>
 								<td><?php echo $result;  ?></td>
