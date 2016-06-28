@@ -398,5 +398,66 @@ class Member extends CI_CONTROLLER{
 		}
 		
 	}
+
+	public function creatework(){
+		$username = $this->input->post("username");
+		
+
+		$config = array(
+			array(
+					"field"=>"stime",
+					"label"=>"เวลาเริ่มทำงาน",
+					"rules"=>"required"
+				),
+			array(
+					"field"=>"etime",
+					"label"=>"เวลาเลิกงาน",
+					"rules"=>"required"
+				),
+			array(
+					"field"=>"inmoney",
+					"label"=>"รายรับ",
+					"rules"=>"required"
+				),
+			array(
+					"field"=>"outmoney",
+					"label"=>"รายจ่าย",
+					"rules"=>"required"
+				)
+		);
+
+		
+
+		$this->form_validation->set_rules($config);
+		if($this->form_validation->run()==FALSE){
+			$this->rs = $this->member->getone($id);
+			$this->load->view("commentuser/index",$this);
+		}
+		else{	  
+			$this->member->savecomment(array(
+       	   			"username"=>$username,
+       	   			"beautiful"=>$this->input->post("beautiful"),
+		       	   	"work"=>$this->input->post("work"),
+		       	   	"code"=>$this->input->post("code"),
+		       	   	"time"=>$this->input->post("time")
+       	   		));
+			$this->member->update($id,array(
+						"username"=>$this->input->post("username"),
+						"password"=>md5($this->input->post("password")),
+						"fname"=>$this->input->post("fname"),
+						"lname"=>$this->input->post("lname"),
+						"phone"=>$this->input->post("phone"),
+						"email"=>$this->input->post("email"),
+						"text"=>$this->input->post("text"),
+						"sdate"=>$this->input->post("sdate"),
+						"edate"=>$this->input->post("edate"),
+						"upload"=>$this->input->post("upload"),
+						"comment"=>"1"
+					));
+			$this->showone($id);
+		}
+		
+	}
+
 }
  ?>
