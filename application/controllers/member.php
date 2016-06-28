@@ -435,6 +435,11 @@ class Member extends CI_CONTROLLER{
 					"field"=>"outmoney",
 					"label"=>"รายจ่าย",
 					"rules"=>"required"
+				),
+			array(
+					"field"=>"des",
+					"label"=>"ลายละเอียด",
+					"rules"=>"required"
 				)
 		);
 
@@ -457,7 +462,8 @@ class Member extends CI_CONTROLLER{
 		       	   	"stime"=>$this->input->post("stime"),
 		       	   	"etime"=>$this->input->post("etime"),
 		       	   	"inmoney"=>$this->input->post("inmoney"),
-		       	   	"outmoney"=>$this->input->post("outmoney")
+		       	   	"outmoney"=>$this->input->post("outmoney"),
+		       	   	"des"=>$this->input->post("des")
        	   		));
 			$this->member->update($id,array(
 						"username"=>$this->input->post("username"),

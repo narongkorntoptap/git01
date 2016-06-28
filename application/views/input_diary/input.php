@@ -44,6 +44,14 @@
 				  	</div>
 
 				  	<div class="form-group">
+				    	<label for="inputPassword3" class="col-sm-2 control-label">รายละเอียด</label>
+				    	<div class="col-sm-10">
+				      		<textarea type='text' name='des' class="form-control inputform" value="<?php echo set_value("des"); ?>"></textarea> 
+				   		</div>
+				  	</div>
+
+
+				  	<div class="form-group">
 		    			<label for="text" class="col-sm-2 control-label"></label>
 	    				<div class="col-sm-10">
 			    			<input type="hidden" name="username" value="<?php echo $rs->username; ?>">
