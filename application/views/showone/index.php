@@ -45,10 +45,7 @@
 						<td><img src="<?php echo base_url(); ?>images/flag/<?php echo $r->upload; ?>"></td>
 						<!-- $id = <?php echo $r->id?>; -->
 						<td>
-								<?php echo "<pre>";
-								print_r($this->r);
-								print_r($this->rs);
-								exit(); ?>
+								
 								<?php echo form_open("member/work");?>
 								<input type="hidden" name="username" value="<?php echo $r->username; ?>">
 								<button type="submit" class="buttonuser">diary</button> 
@@ -74,6 +71,42 @@
 					
 
 	</table>
+
+
+	<table class="table table-hover">
+		<thead>
+			<tr>
+				
+				<th>Date</th>
+				<th>Starttime</th>
+				<th>Endtime</th>
+				<!-- <th>Description</th> -->
+				<th>Income</th>
+				<th>Expenses</th>
+				<th>remain</th>
+				
+		</thead><!-- <img src=""> -->
+		<tbody>
+			
+					<?php if(count($rs)>0){ ?>
+						<?php foreach($rs as $a){  ?>
+							<tr>
+								
+							
+								<td><?php echo $a->date; ?></td>
+								<td><?php echo $a->stime; ?></td>
+								<td><?php echo $a->etime; ?></td>
+								<td><?php echo $a->inmoney; ?></td>
+								<td><?php echo $a->outmoney; ?></td>
+								<td><?php echo $a->inmoney; ?> <var>-</var> <?php echo $r->outmoney; ?></td>
+							</tr>
+						<?php }
+					} 
+					?>
+		</tbody>
+	</table>
+
+
 
 
 <?php $this->load->view('template/footer'); ?>
