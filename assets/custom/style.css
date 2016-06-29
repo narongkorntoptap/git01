@@ -18,8 +18,9 @@
     z-index: 99;  
     background-color: #f2f2f2;
 	padding: 10px;
-}  
-#index .iBannerFix{
+}
+
+/*#index .iBannerFix{
       position: fixed;
 }
 #comment .iBannerFix{
@@ -27,10 +28,10 @@
 }
 #commentuser .iBannerFix{
       position: fixed;
-}
-#login .iBannerFix{
-      position: fixed;
-}
+}*/
+/*#login .iBannerFix{
+      padding-bottom: 50px;
+}*/
 
 
 
