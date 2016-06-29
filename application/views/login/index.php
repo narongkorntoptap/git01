@@ -26,6 +26,10 @@
 		  			</div>
 		  		</div>
 		  	</div>
+			<div class="garden-images">
+				<img style="position: relative; width: 100%; padding-top: 100px;" class="img-responsive" src="<?php echo base_url(); ?>images/login/allflowers.jpg">
+			</div>
+
 		<?php echo form_close(); ?>
 <?php $this->load->view('template/footer'); ?>
 </section>

@@ -1,5 +1,7 @@
 <section id="index">
 <?php $this->load->view('template/header'); ?>
+		
+
 		<table align="center" width="60%" height="100%">
 			<tr>
 				<td>
@@ -8,5 +10,6 @@
 				</td>	
 			</tr>
 		</table>
+		
 <?php $this->load->view('template/footer'); ?>
 </section>
