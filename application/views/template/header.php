@@ -26,7 +26,7 @@
                         <div class="form-group">
                             <ul class="nav navbar-nav navbar-right">
                                 <li><?php echo anchor("member","Home"); ?></li>
-                                <li><?php echo anchor("member/show","Show"); ?></li>
+                                <!-- <li><?php echo anchor("member/show","Show"); ?></li> -->
                             </ul>
                         </div>  
                     </div>
