@@ -507,6 +507,16 @@ class Member extends CI_CONTROLLER{
 
 	}
 
+	public function resultall()
+	{
+
+		$username = $this->input->post("username");
+		$this->rs = $this->db->where("username",$username)->get("work")->result();
+
+		$this->load->view("resul/index",$this);
+
+	}
+
 
 }
  ?>
