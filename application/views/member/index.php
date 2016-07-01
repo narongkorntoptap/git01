@@ -30,5 +30,6 @@
 			</tr>
 		</table>
 		
-<?php $this->load->view('template/footer'); ?>
+
 </section>
+<?php $this->load->view('template/footer'); ?>

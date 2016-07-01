@@ -496,19 +496,19 @@ class Member extends CI_CONTROLLER{
 
 
 	
-	public function resultall()
-	{
+	// public function resultall()
+	// {
 
- 		$username = $this->input->post("username");
-		$this->rs = $this->db->where("username",$username)->get("work")->result();
- 		// 	echo "<pre>";
-			// print_r($this->rs);
-			// exit();
- 		$this->load->view("resultall/index",$this);
+ // 		$username = $this->input->post("username");
+	// 	$this->rs = $this->db->where("username",$username)->get("work")->result();
+ // 		// 	echo "<pre>";
+	// 		// print_r($this->rs);
+	// 		// exit();
+ // 		$this->load->view("resultall/index",$this);
 
-		// $this->db->where("username",$username)->get("work")->result();
+	// 	// $this->db->where("username",$username)->get("work")->result();
 	
-	}
+	// }
 
 	
 
