@@ -18,7 +18,7 @@
 	});
 </script>
 
-		<table align="center" >
+		<table align="center" width="60%" style="padding-top: 100px;">
 			<tr>
 				<td>
 
@@ -27,7 +27,7 @@
 					<button id="register" class="buttonuser btn-block" ><a href="<?php echo site_url('member/login'); ?>">Login</a></button>
 					
 					<button id="register" class="buttonuser btn-block"><a href="<?php echo site_url('member/create'); ?>">Register</a></button> -->
-					<div id="flip">click</div>
+					<div id="flip" >click</div>
 					<button id="panel" class="buttonuser btn-block"><a href="<?php echo site_url('member/login'); ?>">Login</a></button>
 					<div id="flip2">click</div>
 					<button id="panel2" class="buttonuser btn-block"><a href="<?php echo site_url('member/create'); ?>">Register</a></button>
@@ -35,6 +35,10 @@
 				</td>	
 			</tr>
 		</table>
+
+		<div class="garden-images">
+				<img style="position: relative; width: 100%; padding-top: 100px;" class="img-responsive" src="<?php echo base_url(); ?>images/login/allflowers2.jpg">
+		</div>
 		
 
 </section>

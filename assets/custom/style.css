@@ -8,6 +8,7 @@
 }
 #menu_header a{
 	color : #000;
+    
 }
 #footer .iBannerFix{  
     height:50px;  
@@ -52,19 +53,21 @@ a:focus{
     color: white;
 }
 
-#index .buttonuser {
-    padding: 50px 22px;
+/*#index .buttonuser {
+    
+    
     font-size: 30px;
-}
+}*/
 .buttonuser {
     background-color: #099e97;
     border: none;
     color: white;
-    padding: 6px 22px;
+    padding-bottom: 50px;
+    padding-top: 50px;
     text-align: center;
     text-decoration: none;
     display: inline-block;
-    font-size: 16px;
+    font-size: 30px;
     margin: 4px 2px;
     cursor: pointer;
 }
@@ -92,13 +95,18 @@ a:focus{
 }*/
 
 #flip, #flip2 {
-    padding: 50px;
+    
+    text-shadow: 2px 2px 5px gray;
+    padding-top: 20px;
+    padding-bottom: 20px;
     text-align: center;
-    background-color: #e5eecc;
-    border: solid 1px #c3c3c3;
+    background-color: #A4D3EE;
+    border: solid 1px #EECBAD;
+    font-size: 20px;
 }
 
 #panel, #panel2 {
  
+   
     display: none;
 }
