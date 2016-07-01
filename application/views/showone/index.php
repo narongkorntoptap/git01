@@ -72,13 +72,6 @@
 							<input type="text" name="month" placeholder="month">
 							<button type="submit" class="buttonuser">คำนวณรายจับรายจ่าย</button> 
 							<?php echo form_close(); ?>
-
-							<?php echo form_open("member/resultall");?>
-							<input type="hidden" name="username" value="<?php echo $r->username; ?>">
-							<!-- <input type="text" name="year" placeholder="year">
-							<input type="text" name="month" placeholder="month"> -->
-							<button type="submit" class="buttonuser">Show_ALL_Diary</button> 
-							<?php echo form_close(); ?>
 						</td>
 					</tr>
 			
