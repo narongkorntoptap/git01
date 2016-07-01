@@ -60,7 +60,6 @@
 								<?php echo form_close(); ?>
 							<?php } ?>
 
-
 							<?php echo form_open("member/edit");?>
 							<input type="hidden" name="id" value="<?php echo $r->id; ?>">
 							<input type="hidden" name="username" value="<?php echo $r->username; ?>">
@@ -81,8 +80,46 @@
 
 	</table>
 
-	
-</section>
+
+	<table class="table table-hover">
+		<thead>
+			<tr>
+				
+				<th>Date</th>
+				<th>Starttime</th>
+				<th>Endtime</th>
+				<th>Description</th>
+				<th>Income</th>
+				<th>Expenses</th>
+				<th>remain</th>
+				
+		</thead><!-- <img src=""> -->
+		<tbody>
+			
+					<?php if(count($rs)>0){ ?>
+						<?php foreach($rs as $a){  ?>
+							<tr>
+								
+							<?php $income=$a->inmoney; ?>
+							<?php $expenses = $a->outmoney; 
+								$result = $income - $expenses;
+							?>
+								<td><?php echo $a->day; ?>-<?php echo $a->month; ?>-<?php echo $a->year; ?></td>
+								<td><?php echo $a->stime; ?></td>
+								<td><?php echo $a->etime; ?></td>
+								<td><?php echo $a->Des; ?></td>
+								<td><?php echo $a->inmoney; ?></td>
+								<td><?php echo $a->outmoney; ?></td>
+								<td><?php echo $result;  ?></td>
+							</tr>
+						<?php }
+					} 
+					?>
+		</tbody>
+	</table>
+
+
 
 
 <?php $this->load->view('template/footer'); ?>
+</section>
