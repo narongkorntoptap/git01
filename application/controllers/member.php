@@ -511,9 +511,11 @@ class Member extends CI_CONTROLLER{
 	{
 
 		$username = $this->input->post("username");
+		$this->r = $this->member->getone($username);
 		$this->rs = $this->db->where("username",$username)->get("work")->result();
 
-		$this->load->view("resul/index",$this);
+		$this->showone($this->r->username);
+		// $this->load->view("resul/index",$this);
 
 	}
 
