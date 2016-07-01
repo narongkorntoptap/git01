@@ -90,3 +90,15 @@ a:focus{
 /*#index a:hover{
     width: 20px;
 }*/
+
+#flip, #flip2 {
+    padding: 50px;
+    text-align: center;
+    background-color: #e5eecc;
+    border: solid 1px #c3c3c3;
+}
+
+#panel, #panel2 {
+ 
+    display: none;
+}
