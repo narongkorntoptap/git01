@@ -493,7 +493,7 @@ class Member extends CI_CONTROLLER{
 		}
 		
 	}
-<<<<<<< HEAD
+
 
 	
 	public function resultall()
@@ -512,8 +512,8 @@ class Member extends CI_CONTROLLER{
 
 	
 
-=======
->>>>>>> 3e2f3ab28524aa20bdaf6919e75e0d630030892f
+
+
 	public function worktime(){
 		$year = $this->input->post("year");
 		$month = $this->input->post("month");
@@ -527,10 +527,6 @@ class Member extends CI_CONTROLLER{
 		$this->load->view("showonetime/index",$this);
 
 	}
-<<<<<<< HEAD
-
-=======
->>>>>>> 3e2f3ab28524aa20bdaf6919e75e0d630030892f
 
 
 }
