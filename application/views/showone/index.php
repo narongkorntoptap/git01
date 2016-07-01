@@ -60,6 +60,11 @@
 								<?php echo form_close(); ?>
 							<?php } ?>
 
+							<?php echo form_open("member/resultall");?>
+								<input type="hidden" name="username" value="<?php echo $r->username; ?>">
+								<button type="submit" class="buttonuser">ผลรายเดือน</button> 
+								<?php echo form_close(); ?>
+
 							<?php echo form_open("member/edit");?>
 							<input type="hidden" name="id" value="<?php echo $r->id; ?>">
 							<input type="hidden" name="username" value="<?php echo $r->username; ?>">
@@ -72,6 +77,68 @@
 					
 
 	</table>
+
+	<?php echo form_open("member/resultall");?>
+		
+		<div class="col-md-6">
+			<button type="submit" class="buttonuser">ผลรายเดือน----></button> 
+		</div>
+		
+		<div class="col-md-6">
+			<div class="form-group">
+	      		<p align="center">
+	      			<label for="role">month</label>
+	      	
+						<select name="month">
+							<option value = "Please Choose Month">Please Choose Month</option>	
+								<?php  
+									
+									$mountt = array(
+										 "1"=>"January",
+										 "2"=>"Fabuary",
+										 "3"=>"March",
+										 "4"=>"Apil",
+										 "5"=>"May",
+										 "6"=>"June",
+										 "7"=>"July",
+										 "8"=>"August",
+										 "9"=>"September",
+										 "10"=>"Octorber",
+										 "11"=>"Novamber",
+										 "12"=>"December");
+										
+										foreach($mountt as $x => $x_value) {
+													echo "<option value = ".$x.">";
+													echo $x_value . "<br>";
+													echo "</option>";
+												}
+								?>
+						</select>	
+					</p>
+				</div>	
+			
+			
+			<div class="form-group">
+	      		<p align="center">	
+		      		<label for="role">Year</label>
+							<select name="year">
+								<option value = "Please Choose Year">Please Choose Year</option>
+									<?php  
+										for ($y = 1900; $y <= 2016 ; $y++) {
+											  	echo "<option>";
+												echo $y . "<br>";
+												echo "</option>";
+										}
+										
+									?>
+							</select>
+				</p>
+			</div>	
+		
+		</div>
+			
+		
+	<?php echo form_close(); ?>
 
 
 	<table class="table table-hover">
