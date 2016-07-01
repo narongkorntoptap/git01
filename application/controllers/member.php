@@ -443,8 +443,7 @@ class Member extends CI_CONTROLLER{
 				)
 		);
 
-		
-
+	
 		$this->form_validation->set_rules($config);
 		if($this->form_validation->run()==FALSE){
 			// echo "string";
@@ -455,10 +454,21 @@ class Member extends CI_CONTROLLER{
 			// exit();
 			$this->load->view("input_diary/input",$this);
 		}
-		else{	  
+		else{
+			$date1 = date('Y-m-d');
+			$date2 = date_create($date1);
+			$y = date_format($date2,'Y');
+			$m = date_format($date2,'m');
+			$d = date_format($date2,'d');	
+			// echo $y;
+			// echo $m;
+			// echo $d;  
+			// exit();
 			$this->member->savework(array(
        	   			"username"=>$username,
-       	   			"date"=>date('Y-m-d'),
+       	   			"year"=>$y,
+       	   			"month"=>$m,
+       	   			"day"=>$d,
 		       	   	"stime"=>$this->input->post("stime"),
 		       	   	"etime"=>$this->input->post("etime"),
 		       	   	"inmoney"=>$this->input->post("inmoney"),
@@ -483,7 +493,6 @@ class Member extends CI_CONTROLLER{
 		}
 		
 	}
-
 	public function worktime(){
 		$year = $this->input->post("year");
 		$month = $this->input->post("month");
