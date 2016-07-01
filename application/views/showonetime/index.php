@@ -97,7 +97,10 @@
 				<th>Description</th>
 				<th>Income</th>
 				<th>Expenses</th>
-				<th>remain</th>
+				<th>Remain of day</th>
+				<th>Income of month</th>
+				<th>Expenses of month</th>
+				<th>Remain of month</th>
 
 				
 		</thead><!-- <img src=""> -->
@@ -107,9 +110,17 @@
 						<?php foreach($rs as $a){  ?>
 
 								
+							
+							<?php 
+								$income2 =$a->inmoney;
+								$outcome2 =$a->outmoney;
+								$result2 = $income2 - $outcome2;
+
+							?>
 							<?php 
 								$income = $income + $a->inmoney;
 								$outcome = $outcome + $a->outmoney;
+								$result = $income - $outcome;
 
 							?>
 							
@@ -119,7 +130,10 @@
 								<td><?php echo $a->Des; ?></td>
 								<td><?php echo $a->inmoney; ?></td>
 								<td><?php echo $a->outmoney; ?></td>
+								<td><?php echo $result2;  ?></td>
 								<td><?php echo $income;  ?></td>
+								<td><?php echo $outcome;  ?></td>
+								<td><?php echo $result;  ?></td>
 							</tr>
 						<?php }
 					} 
