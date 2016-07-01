@@ -27,9 +27,9 @@
 					<button id="register" class="buttonuser btn-block" ><a href="<?php echo site_url('member/login'); ?>">Login</a></button>
 					
 					<button id="register" class="buttonuser btn-block"><a href="<?php echo site_url('member/create'); ?>">Register</a></button> -->
-					<div id="flip" >click</div>
+					<div id="flip" >Click To Login</div>
 					<button id="panel" class="buttonuser btn-block"><a href="<?php echo site_url('member/login'); ?>">Login</a></button>
-					<div id="flip2">click</div>
+					<div id="flip2">Click To Register</div>
 					<button id="panel2" class="buttonuser btn-block"><a href="<?php echo site_url('member/create'); ?>">Register</a></button>
 
 				</td>	
