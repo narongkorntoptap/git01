@@ -92,30 +92,34 @@
 				<th>Income</th>
 				<th>Expenses</th>
 				<th>remain</th>
+
 				
 		</thead><!-- <img src=""> -->
 		<tbody>
-			
-					<?php if(count($rs)>0){ ?>
+					
+					<?php $income=0; $outcome=0; if(count($rs)>0){ ?>
 						<?php foreach($rs as $a){  ?>
-							<tr>
+
 								
-							<?php $income=$a->inmoney; ?>
-							<?php $expenses = $a->outmoney; 
-								$result = $income - $expenses;
+							<?php 
+								$income = $income + $a->inmoney;
+								$outcome = $outcome + $a->outmoney;
+
 							?>
+							
 								<td><?php echo $a->day; ?>-<?php echo $a->month; ?>-<?php echo $a->year; ?></td>
 								<td><?php echo $a->stime; ?></td>
 								<td><?php echo $a->etime; ?></td>
 								<td><?php echo $a->Des; ?></td>
 								<td><?php echo $a->inmoney; ?></td>
 								<td><?php echo $a->outmoney; ?></td>
-								<td><?php echo $result;  ?></td>
+								<td><?php echo $income;  ?></td>
 							</tr>
 						<?php }
 					} 
 					?>
 		</tbody>
+
 	</table>
 
 
