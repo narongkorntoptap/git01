@@ -15,7 +15,9 @@
 		public function getonework($username){
 			return $this->db->where("username",$username)->get("work")->result();
 		}
-		
+		public function getoneworktime($username,$year,$month){
+			return $this->db->where("username",$username)->where("year",$year)->where("month",$month)->get("work")->result();
+		}
 		public function savecomment($ar = array()){
 			$this->db->insert("comment",$ar);
 		}

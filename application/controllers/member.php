@@ -455,10 +455,21 @@ class Member extends CI_CONTROLLER{
 			// exit();
 			$this->load->view("input_diary/input",$this);
 		}
-		else{	  
+		else{
+			$date1 = date('Y-m-d');
+			$date2 = date_create($date1);
+			$y = date_format($date2,'Y');
+			$m = date_format($date2,'m');
+			$d = date_format($date2,'d');	
+			// echo $y;
+			// echo $m;
+			// echo $d;  
+			// exit();
 			$this->member->savework(array(
        	   			"username"=>$username,
-       	   			"date"=>date('Y-m-d'),
+       	   			"year"=>$y,
+       	   			"month"=>$m,
+       	   			"day"=>$d,
 		       	   	"stime"=>$this->input->post("stime"),
 		       	   	"etime"=>$this->input->post("etime"),
 		       	   	"inmoney"=>$this->input->post("inmoney"),
@@ -483,6 +494,7 @@ class Member extends CI_CONTROLLER{
 		}
 		
 	}
+<<<<<<< HEAD
 	
 	public function resultall()
 	{
@@ -499,6 +511,21 @@ class Member extends CI_CONTROLLER{
 	}
 
 	
+=======
+	public function worktime(){
+		$year = $this->input->post("year");
+		$month = $this->input->post("month");
+		$username = $this->input->post("username");
+		// echo $username;
+		// echo $year;
+		// echo $month;
+		// exit();
+		$this->r = $this->member->getone($username);
+		$this->rs = $this->member->getoneworktime($username,$year,$month);
+		$this->load->view("showonetime/index",$this);
+
+	}
+>>>>>>> 8a9c9909715df81215d0d79a7a2230e6f54ee346
 
 
 }

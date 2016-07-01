@@ -19,7 +19,7 @@
     background-color: #f2f2f2;
 	padding: 10px;
 }
-
+ 
 #index .iBannerFix{
       position: fixed;
 }
@@ -53,7 +53,6 @@ a:focus{
 }
 
 #index .buttonuser {
-    background-color: #00688B;
     padding: 50px 22px;
     font-size: 30px;
 }
@@ -91,20 +90,3 @@ a:focus{
 /*#index a:hover{
     width: 20px;
 }*/
-
-
-/*jquery*/
-#flip1,#flip2 {
-    
-    padding: 20px;
-    text-align: center;
-    background-color: #A4D3EE;
-    border: solid 1px #D3D3D3;
-    text-shadow: 2px 2px 5px gray
-}
-
-#panel,#panel2 {
-    
-    padding: 50px;
-    display: none;
-}
