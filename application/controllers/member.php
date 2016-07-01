@@ -493,8 +493,11 @@ class Member extends CI_CONTROLLER{
 		}
 		
 	}
+<<<<<<< HEAD
 
 
+=======
+>>>>>>> 9843a4bc7657e1bcdd27ca55d52cce38f88cf1f7
 	public function worktime(){
 		$year = $this->input->post("year");
 		$month = $this->input->post("month");
@@ -506,18 +509,6 @@ class Member extends CI_CONTROLLER{
 		$this->r = $this->member->getone($username);
 		$this->rs = $this->member->getoneworktime($username,$year,$month);
 		$this->load->view("showonetime/index",$this);
-
-	}
-
-	public function resultall()
-	{
-
-		$username = $this->input->post("username");
-		$this->r = $this->member->getone($username);
-		$this->rs = $this->db->where("username",$username)->get("work")->result();
-
-		$this->showone($this->r->username);
-		// $this->load->view("resul/index",$this);
 
 	}
 
